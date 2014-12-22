@@ -5,7 +5,7 @@ feature 'CRUDing posts' do
     visit posts_path
     click_on "New Post"
     fill_in "Subject", with: "Weather"
-    fill_in "Post", with: "Can you believe it's snowing?"
+    fill_in "Post text", with: "Can you believe it's snowing?"
     click_on "Create Post"
 
     expect(page).to have_content("Weather")

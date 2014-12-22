@@ -24,7 +24,7 @@ feature "Users" do
     expect(page).to have_content ("Sign Up Sign In")
   end
 
-  scenario "User can sign in" do
+  xscenario "User can sign in" do
     visit signup_path
     fill_in "User name", with: "User1"
     fill_in "Email", with: "fake@email.com"

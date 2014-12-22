@@ -9,8 +9,9 @@ post '/sign-up' => 'registrations#create'
 get '/sign-in' => 'authentication#new', as: :signin
 post '/sign-in' => 'authentication#create'
 get '/sign-out' => 'authentication#destroy', as: :signout
-resources :users
 
+resources :users
+resources :posts
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 
