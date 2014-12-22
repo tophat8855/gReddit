@@ -1,29 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>GReddit</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
-  <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
-    <div class="container">
-      <ul class = "nav navbar-nav navbar-right">
-        <% if current_user %>
-        <%= link_to "#Welcome, #{current_user.user_name}", user_path(session[:user_id]), :class=>"navbar-brand" %>
-        <%= link_to "Sign Out", signout_path, :class =>"navbar-brand" %>
-        <% else %>
-        <%= link_to "Sign Up", signup_path, :class =>"navbar-brand" %>
-        <%= link_to "Sign In", signin_path, :class =>"navbar-brand" %>
-        <% end %>
-      </ul>
+  <head>
+    <title>GReddit</title>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <ul class = "nav navbar-nav navbar-right">
+          <% if current_user %>
+          <%= link_to "#Welcome, #{current_user.user_name}", user_path(session[:user_id]), :class=>"navbar-brand" %>
+          <%= link_to "Sign Out", signout_path, :class =>"navbar-brand" %>
+          <% else %>
+          <%= link_to "Sign Up", signup_path, :class =>"navbar-brand" %>
+          <%= link_to "Sign In", signin_path, :class =>"navbar-brand" %>
+          <% end %>
+        </ul>
+      </div>
+    </nav>
+
+    <div class= "container">
+      <% flash.each do |name, msg| -%>
+      <%= content_tag :div, msg, class: "alert alert-#{name} text-center" %>
+      <% end -%>
     </div>
-  </nav>
 
-  <div class="container">
-    <%= yield %>
-  </div>
+    <div class="container">
+      <%= yield %>
+    </div>
 
-</body>
+  </body>
 </html>
