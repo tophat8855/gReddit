@@ -7,3 +7,5 @@
 <%= "Created at: #{@post.created_at}" %>
 
 <%= link_to "Delete", post_path, method: :delete, class: "btn btn-danger"%>
+<%= link_to "Back", posts_path %>
+<%= link_to "Add Comment", new_post_comment_path(@post) %>

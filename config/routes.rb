@@ -11,7 +11,10 @@ post '/sign-in' => 'authentication#create'
 get '/sign-out' => 'authentication#destroy', as: :signout
 
 resources :users
-resources :posts
+resources :posts do
+  resources :comments
+end
+
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

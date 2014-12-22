@@ -1,0 +1,29 @@
+<h1>
+  <%= "Comments for #{@post.subject}" %>
+</h1>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>Comment</th>
+      <th>Date</th>
+      <th>Author</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @post.comments.each do |comment| %>
+      <tr>
+        <td>
+          <%= comment.comment %>
+        </td>
+        <td>
+          <%= comment.created_at %>
+        </td>
+        <td>
+          <%= comment.user %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

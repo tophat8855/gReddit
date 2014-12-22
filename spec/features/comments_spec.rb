@@ -7,6 +7,7 @@ feature 'CRUDing comments' do
     post_text: "Some stuff",
     )
     visit posts_path
+    click_on "Posting"
     click_on "Add Comment"
     fill_in "Comment", with: "Rad Stuff, Yo."
     click_on "Submit Comment"
