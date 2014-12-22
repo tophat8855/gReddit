@@ -1,1 +1,46 @@
-Registration page
+<h1>Sign up for gReddit</h1>
+<h3>(like reddit, but with less kyriarchy)</h3>
+
+<%= form_for @user, url: signup_path, html:{role:"form"} do |f| %>
+  <% if @user.errors.present? %>
+    <ul>
+      <% @user.errors.full_messages.each do |message| %>
+      <div class="text-danger">
+        <li><%= message %></li>
+      </div>
+      <% end %>
+    </ul>
+  <% end %>
+
+  <div>
+    <%= f.label :user_name, class:"control-label" %>
+  </div>
+  <div>
+    <%= f.text_field :user_name, class:"form-control" %>
+  </div>
+
+  <div>
+    <%= f.label :email, class:"control-label" %>
+  </div>
+  <div>
+    <%= f.email_field :email, class:"form-control" %>
+  </div>
+
+  <div>
+    <%= f.label :password, class:"control-label" %>
+  </div>
+  <div>
+    <%= f.password_field :password, class:"form-control" %>
+  </div>
+
+  <div>
+    <%= f.label :password_confirmation, class:"control-label" %>
+  </div>
+  <div>
+    <%= f.password_field :password_confirmation, class:"form-control" %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.submit "Sign up", class:"btn btn-primary" %>
+  </div>
+<% end %>
