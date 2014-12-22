@@ -8,6 +8,20 @@
 </head>
 <body>
 
+  <nav class="navbar navbar-default navbar-fixed-top navbar-inverse" role="navigation">
+    <div class="container">
+      <ul class = "nav navbar-nav navbar-right">
+        <% if current_user %>
+        <%= link_to "#Welcome, {user_name}", user_path(session[:user_id]), :class=>"navbar-brand" %>
+        <%= link_to "Sign Out", signout_path, :class =>"navbar-brand" %>
+        <% else %>
+        <%= link_to "Sign Up", signup_path, :class =>"navbar-brand" %>
+        <%= link_to "Sign In", signin_path, :class =>"navbar-brand" %>
+        <% end %>
+      </ul>
+    </div>
+  </nav>
+
 <%= yield %>
 
 </body>
