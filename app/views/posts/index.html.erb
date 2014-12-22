@@ -1,1 +1,27 @@
 <%= link_to "New Post", new_post_path %>
+
+<table class = "table">
+  <thead>
+    <tr>
+      <th>
+        Subject
+      </th>
+      <th>
+        Post
+      </th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @posts.each do |post| %>
+    <tr>
+      <td>
+        <%= link_to "#{post.subject}", post_path(post) %>
+      </td>
+      <td>
+        <%= "#{post.post_text}" %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

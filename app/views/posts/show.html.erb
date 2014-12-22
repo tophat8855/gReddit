@@ -5,3 +5,5 @@
   <%= "#{@post.post_text}" %>
 </p>
 <%= "Created at: #{@post.created_at}" %>
+
+<%= link_to "Delete", post_path, method: :delete, class: "btn btn-danger"%>
