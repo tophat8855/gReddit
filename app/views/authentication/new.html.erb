@@ -1,0 +1,25 @@
+<h1>Welcome back!</h1>
+
+<%= form_tag signin_path, html:{rold:"form"} do |f| %>
+  <% if @sign_in_error %>
+    <div class="text-danger">
+      <%= @sign_in_error %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= label_tag :email, nil, class:"control-label" %>
+    <%= email_field_tag :email, nil, class:"form-control" %>
+  </div>
+
+  <div>
+    <%= label_tag :password, nil, class:"control-label" %>
+    <%= password_field_tag :password, nil, class:"form-control" %>
+  </div>
+
+  <br>
+
+  <div class="form-actions">
+    <%= submit_tag "Sign in", class:"btn btn-primary" %>
+  </div>
+<% end %>
