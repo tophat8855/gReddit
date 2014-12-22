@@ -9,6 +9,6 @@ feature "Users" do
     fill_in "Password confirmation", with: "123"
     click_on "Sign up"
 
-    expect(page).to have_content ("Welcome, #{User1}")
+    expect(page).to have_content ("Welcome, User1")
   end
 end
