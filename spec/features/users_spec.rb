@@ -11,4 +11,16 @@ feature "Users" do
 
     expect(page).to have_content ("Welcome, User1")
   end
+
+  scenario "User can sign out" do
+    visit signup_path
+    fill_in "User name", with: "User1"
+    fill_in "Email", with: "fake@email.com"
+    fill_in "Password", with: "123"
+    fill_in "Password confirmation", with: "123"
+    click_on "Sign up"
+    click_on "Sign Out"
+
+    expect(page).to have_content ("Sign Up Sign In")
+  end
 end
