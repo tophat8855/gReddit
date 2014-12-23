@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :require_login, :only => [:edit, :update, :destroy]
+  before_action :require_login, :except => [:index, :show]
   before_action do
     @post = Post.find(params[:post_id])
   end
