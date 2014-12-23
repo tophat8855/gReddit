@@ -1,28 +1,23 @@
 == README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is a quickly made Reddit clone for gSchool.
 
-Things you may want to cover:
+In the end it should allow these:
 
-* Ruby version
+* Anyone can visit the root page and see a list of all the posts
 
-* System dependencies
+* Anyone can click on a post to view its comments
 
-* Configuration
+* Only a logged in user can submit a new post
 
-* Database creation
+* Only a logged in user can comment on a post
 
-* Database initialization
+* Only the owner/creator of a post can edit that post
 
-* How to run the test suite
+* Only the owner/creator of a post can delete that post
 
-* Services (job queues, cache servers, search engines, etc.)
+* Only the owner/creator of a comment can edit that comment
 
-* Deployment instructions
+* Only the owner/creator of a comment can delete that comment
 
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Things it is testing: my knowledge of authentication, nested routes, model associations.
