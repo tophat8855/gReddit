@@ -1,18 +1,20 @@
 <h3>
-  <%= "#{@post.subject}" %>
+  <%= @post.subject %>
 </h3>
 
 <p>
-  <%= "#{@post.post_text}" %>
+  <%= @post.post_text %>
 </p>
 
 <p>
-  <%= "Posted: #{@post.created_at}" %>
+  Posted: <%= time_ago_in_words(@post.created_at) %> ago by <%= @post.user.user_name %>
 </p>
 
 <p>
-  <%= link_to "Edit", edit_post_path %>
-  <%= link_to "Delete", post_path, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% if current_user && @post.user_id == current_user.id %>
+    <%= link_to "Edit", edit_post_path %>
+    <%= link_to "Delete", post_path, method: :delete, data: { confirm: 'Are you sure you want this post deleted?' } %>
+  <% end %>
   <%= link_to "Back", posts_path %>
 </p>
 
@@ -22,10 +24,13 @@
 
 <div>
   <% @post.comments.each do |comment| %>
-  <%= link_to "#{comment.comment}", post_comment_path(@post, comment) %>
+  <%= link_to comment.comment, post_comment_path(@post, comment) %>
   <div class="text-right">
-    <%= "Submitted #{comment.created_at} by #{comment.user}" %>
+    Submitted <%= time_ago_in_words(comment.created_at) %> by <%= comment.user.user_name %>
   </div>
   <% end %>
 </div>
-<%= link_to "Add your own comment", new_post_comment_path(@post) %>
+
+<% if current_user %>
+  <%= link_to "Add your own comment", new_post_comment_path(@post) %>
+<% end %>

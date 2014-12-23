@@ -1,6 +1,10 @@
-<h1>New Comment</h1>
+<p>
+  <strong>Post Title:</strong><%= @post.subject %>
+</p>
 
-<%= @post.subject %>
-<%= @post.post_text %>
+<p>
+  <strong>Post content:</strong><%= @post.post_text %>
+</p>
 
+<strong>How do you wish to reply?</strong>
 <%= render 'form' %>

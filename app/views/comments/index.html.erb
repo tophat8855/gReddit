@@ -19,12 +19,13 @@
           <%= link_to "#{comment.comment}", post_comment_path(params[:post_id], comment) %>
         </td>
         <td>
-          <%= comment.created_at %>
+          <%= "#{time_ago_in_words(comment.created_at)}" %>
         </td>
         <td>
-          <%= comment.user %>
+          <%= comment.user.user_name %>
         </td>
       </tr>
     <% end %>
   </tbody>
 </table>
+<%= link_to "Add your own!", new_post_comment_path(params[:post_id])%>

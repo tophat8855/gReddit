@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :require_login, :except => [:index, :show]
+  before_action :authenticate_user, :except => [:index, :show]
   def index
     @posts = Post.all
   end
@@ -9,10 +9,9 @@ class PostsController < ApplicationController
   end
 
   def create
-    @post = Post.new(post_params)
+    @post = current_user.posts.new(post_params)
     if @post.save
-      flash[:success] = "Post posted"
-      redirect_to post_path @post
+      redirect_to post_path @post, notice: "Post posted"
     else
       render :new
     end
@@ -23,25 +22,30 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find_by(id: params[:id])
+    if !@post
+      redirect_to post_path(params[:id]), notice: "Can't touch this!"
+    end
   end
 
   def update
-    @post = Post.find(params[:id])
+    @post = current_user.posts.find_by(id: params[:id])
     @post.update(post_params)
     if @post.save
-      flash[:success] = "Your typos have vanished"
-      redirect_to post_path @post
+      redirect_to post_path @post, notice: "Your typos have vanished"
     else
       render :edit
     end
   end
 
   def destroy
-    @post = Post.find(params[:id])
-    @post.destroy
-    flash[:success] = "Post successfully burninated"
-    redirect_to posts_path
+    @post = current_user.posts.find_by(id: params[:id])
+    if @post
+      @post.destroy
+      redirect_to posts_path, notice: "Post successfully burninated"
+    else
+      redirect_to root_path, notice: "You're so vain, you probably think you own that post."
+    end
   end
 
   private

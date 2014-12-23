@@ -1,5 +1,5 @@
 class CommentsController < ApplicationController
-  before_action :require_login, :except => [:index, :show]
+  before_action :authenticate_user, :except => [:index, :show]
   before_action do
     @post = Post.find(params[:post_id])
   end
@@ -13,9 +13,9 @@ class CommentsController < ApplicationController
 
   def create
     @comment = @post.comments.new(comment_params)
+    @comment.user_id = current_user.id
     if @comment.save
-      flash[:success] = "Comment posted"
-      redirect_to post_comment_path(@post, @comment)
+      redirect_to post_comment_path(@post, @comment), notice: "You troll, you."
     else
       render :new
     end
@@ -32,8 +32,7 @@ class CommentsController < ApplicationController
   def update
     @comment = @post.comments.find(params[:id])
     if @comment.update(comment_params)
-      flash[:success] = "You fixed your typo!"
-      redirect_to post_comments_path(@post)
+      redirect_to post_comments_path(@post), notice: "You fixed your typo!"
     else
       render :edit
     end
