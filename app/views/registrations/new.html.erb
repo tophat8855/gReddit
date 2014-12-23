@@ -1,7 +1,6 @@
 <div class="well">
 
   <h1>Sign up for gReddit</h1>
-  <h3>(like reddit, but with less kyriarchy)</h3>
 
   <%= form_for @user, url: signup_path, html:{role:"form"} do |f| %>
     <% if @user.errors.present? %>
