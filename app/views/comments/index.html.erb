@@ -1,5 +1,6 @@
 <h1>
-  <%= "Comments for #{@post.subject}" %>
+  <%= "Comments for" %>
+  <%= link_to "#{@post.subject}", post_path(@post) %>
 </h1>
 
 <table class = "table">
@@ -15,7 +16,7 @@
     <% @post.comments.each do |comment| %>
       <tr>
         <td>
-          <%= comment.comment %>
+          <%= link_to "#{comment.comment}", post_comment_path(params[:post_id], comment) %>
         </td>
         <td>
           <%= comment.created_at %>

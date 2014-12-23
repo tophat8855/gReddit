@@ -1,6 +1,6 @@
 <p>
-  <strong>For Post:</strong>
-  <%= @post.subject %>
+  <strong><%= @post.subject %></strong> |
+  <%= @post.post_text %>
 </p>
 
 <p>
@@ -8,4 +8,6 @@
   <%= @comment.comment %>
 </p>
 
+<%= link_to 'Edit', edit_post_comment_path(@post, @comment) %>
+<%= link_to 'Delete', post_comment_path(@post, @comment), method: :delete, data: { confirm: 'Are you sure?' } %>
 <%= link_to 'Back', post_comments_path(@post) %>

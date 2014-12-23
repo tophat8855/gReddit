@@ -24,6 +24,27 @@ class CommentsController < ApplicationController
     @comment = @post.comments.find(params[:id])
   end
 
+  def edit
+    @comment = @post.comments.find(params[:id])
+  end
+
+  def update
+    @comment = @post.comments.find(params[:id])
+    if @comment.update(comment_params)
+      flash[:success] = "You fixed your typo!"
+      redirect_to post_comments_path(@post)
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @comment = @post.comments.find(params[:id])
+    @comment.destroy
+    flash[:success] = "Comment has been relesased to the ether."
+    redirect_to post_comments_path(@post)
+  end
+
   private
   def comment_params
     params.require(:comment).permit(:comment)

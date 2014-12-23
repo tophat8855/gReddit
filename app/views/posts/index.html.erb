@@ -7,7 +7,9 @@
         Subject
       </th>
       <th>
-        Post
+      </th>
+      <th>
+        Comments
       </th>
     </tr>
   </thead>
@@ -19,7 +21,10 @@
         <%= link_to "#{post.subject}", post_path(post) %>
       </td>
       <td>
-        <%= "#{post.post_text}" %>
+        <%= "Submitted #{post.created_at} by #{post.user}" %>
+      </td>
+      <td>
+        <%= link_to "#{post.comments.count}", post_comments_path(post) %>
       </td>
     </tr>
     <% end %>
