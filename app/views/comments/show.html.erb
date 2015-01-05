@@ -6,10 +6,10 @@
 <p>
   <strong>Comment:</strong>
   <%= @comment.comment %>
-  <%= time_ago_in_words(@comment.created_at) %> by <%= @comment.user.user_name %>
+  <%= time_ago_in_words(@comment.created_at) %> ago by <%= @comment.user.user_name %>
 </p>
 
-<% if current_user && @comment.user_id == current_user.id %>
+<% if current_user && (@comment.user_id == current_user.id || current_user.moderate)  %>
   <%= link_to 'Edit', edit_post_comment_path(@post, @comment) %>
   <%= link_to 'Delete', post_comment_path(@post, @comment), method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
