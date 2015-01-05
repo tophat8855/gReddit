@@ -1,1 +1,7 @@
-Users page
+<h1>We use gReddit!</h1>
+
+<ul>
+  <% User.all.each do |user| %>
+  <li><%= link_to "#{user.user_name}", user_path(user.id) %> </li>
+  <% end %>
+</ul>

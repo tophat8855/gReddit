@@ -1,1 +1,18 @@
-User Show page
+<h2><%= @user.user_name %>'s posts</h2>
+
+<ul>
+  <% if @user.posts.count == 0 %>
+    none
+  <% end %>
+  <% @user.posts.each do |post| %>
+  <li><%= link_to "#{post.subject}", post_path(post) %></li>
+  <% end %>
+</ul>
+
+
+<h3>Moderator?</h3>
+<% if @user.moderate %>
+  <%= "Yes" %>
+  <% else %>
+    <%= "No" %>
+<% end %>
